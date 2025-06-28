@@ -1,0 +1,53 @@
+{% extends "auth_base.html" %}
+{% load static %}
+{% block title %} Login | Dashboard webapp {% endblock %}
+
+{% block content %}
+
+{% if messages %}
+
+    {% for message in messages %}
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+            {{ message }}
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+<form method="post">
+
+    {% csrf_token %}
+
+    <h3 class="mb-3" style="font-weight:700;">Dashboard webapp</h3>
+
+    <p class="mb-4" style="font-weight: 500;">Welcome back! Please enter your details.</p>
+
+    <input type="text" name="username" class="form-control mb-3" placeholder="Enter your username" required>
+
+    <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+
+    <div class="d-flex justify-content-between mb-3">
+
+        <div><input type="checkbox" name="remember_me" id="remember_me">
+
+            <label for="remember_me">Remember me</label>
+
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 mb-3" style="background:#2c3247; border:none;">Sign in</button>    
+
+
+
+</form>
+
+{% endblock %}
+
+
