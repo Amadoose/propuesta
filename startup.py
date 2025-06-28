@@ -22,6 +22,20 @@ def run_startup_tasks():
         print("Running migrations...")
         execute_from_command_line(['manage.py', 'migrate'])
         
+        # Create superuser if it doesn't exist
+        print("Creating superuser if needed...")
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        if not User.objects.filter(is_superuser=True).exists():
+            User.objects.create_superuser(
+                username='admin',
+                email='admin@example.com',
+                password='mundana2024!'  # Change this to your preferred password
+            )
+            print("Superuser created: admin/mundana2024!")
+        else:
+            print("Superuser already exists")
+        
         print("Startup tasks completed successfully!")
         return True
     except Exception as e:
