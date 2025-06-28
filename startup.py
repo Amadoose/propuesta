@@ -30,9 +30,9 @@ def run_startup_tasks():
             User.objects.create_superuser(
                 username='admin',
                 email='admin@example.com',
-                password='mundana2024!'  # Change this to your preferred password
+                password='123456'  # Change this to your preferred password
             )
-            print("Superuser created: admin/mundana2024!")
+            print("Superuser created: admin/propuestadashboards")
         else:
             print("Superuser already exists")
         
