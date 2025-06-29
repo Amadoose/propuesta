@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% load url_helpers %}  
+{% block title %}Dashboard | Mundana CRM{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<style>
+    .dashboard-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+    }
+    
+    .iframe-wrapper {
+        width: 100%;
+        max-width: 1200px;
+        height: 700px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .iframe-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+        .iframe-wrapper {
+            height: 600px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .iframe-wrapper {
+            height: 500px;
+        }
+        
+        .dashboard-container {
+            padding: 15px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .iframe-wrapper {
+            height: 400px;
+        }
+        
+        .dashboard-container {
+            padding: 10px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="iframe-wrapper">
+        <iframe 
+            title="00 Oleolab - Monitor de Coberturas" 
+            src="https://app.powerbi.com/view?r=eyJrIjoiZDRlZjYwNWQtNGNjNy00ODA0LThlNTgtNWEzNDA3MWY4MDdjIiwidCI6ImZkZmY4M2MyLThkY2QtNDVmYy1iODg4LTJjMDNmZmU0M2U1MCJ9" 
+            allowFullScreen="true">
+        </iframe>
+    </div>
+</div>
+{% endblock %}

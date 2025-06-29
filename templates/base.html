@@ -406,44 +406,27 @@ html {
             <div class="nav-section">
                 <div class="nav-section-header">Navigation</div>
                 <ul class="nav flex-column">
-                    <li>
+                    {% comment %} <li>
                         <a class="nav-link" href="#quote" data-tooltip="New Quote">
                             <i class="bi bi-file-earmark-text"></i>
                             <span>New Quote</span>
                         </a>
-                    </li>
+                    </li> {% endcomment %}
                     <li><a class="nav-link" href="#" data-tooltip="Home"><i class="bi bi-house"></i><span>Home</span></a></li>                    
 
                 </ul>
             </div>
             <div class="nav-section">
                 <div class="nav-section-header">Dashboards</div>
-                <ul class="nav flex-column">
-                    {% if user.is_superuser or user.profile.level >= 5 %}
-                        <li><a class="nav-link" href="{% url 'dashboard' %}" data-tooltip="Reports"><i class="bi bi-clipboard-data"></i><span>Ventas</span></a></li>
-                        <li><a class="nav-link" href="{% url 'dashboard' %}" data-tooltip="Reports"><i class="bi bi-bar-chart-line"></i><span>Performance</span></a></li>
-                    {% endif %}
+                <ul class="nav flex-column">                   
+                    <li><a class="nav-link" href="{% url 'ventas' %}" data-tooltip="Reports"><i class="bi bi-clipboard-data"></i><span>Ventas</span></a></li>
+                    <li><a class="nav-link" href="{% url 'performance' %}" data-tooltip="Reports"><i class="bi bi-bar-chart-line"></i><span>Performance</span></a></li>
+                    <li><a class="nav-link" href="{% url 'dashboard_3' %}" data-tooltip="Reports"><i class="bi bi-file-bar-graph"></i><span>Dashboard 3</span></a></li>
+                    <li><a class="nav-link" href="{% url 'dashboard_4' %}" data-tooltip="Reports"><i class="bi bi-bar-chart-steps"></i><span>Dashboard 4</span></a></li>
+                    
                 </ul>
             </div>
-            {% comment %} <div class="nav-section">
-                <div class="nav-section-header">Administration</div>
-                <ul class="nav flex-column">
-                    <!-- Show Users Management link only to level 5+ -->
-                    {% if user.is_superuser or user.profile.level >= 5 %}
-                        <li><a class="nav-link" href="#" data-tooltip="Users Management"><i class="bi bi-person-badge"></i><span>Users</span></a></li>
-                    {% else %}
-                        <li><a class="nav-link" href="#" data-tooltip="Agents"><i class="bi bi-person-badge"></i><span>Agents</span></a></li>
-                    {% endif %}
-                    
-                    <li><a class="nav-link" href="#" data-tooltip="Clients"><i class="bi bi-people"></i><span>Clients</span></a></li>
-                    <li><a class="nav-link" href="#" data-tooltip="Suppliers"><i class="bi bi-airplane"></i><span>Suppliers</span></a></li>
-                    
-                    <!-- Show Reports and Admin only to level 5+ -->
-                    {% if user.is_superuser or user.profile.level >= 5 %}                        
-                        <li><a class="nav-link" href="#" data-tooltip="Admin"><i class="bi bi-gear"></i><span>Admin</span></a></li>
-                    {% endif %}
-                </ul>
-            </div> {% endcomment %}
+
         </div>
         <div class="sidebar-footer">     
             <a class="nav-link text-decoration-none logout-link" href="{% url 'logout' %}" data-tooltip="Logout">

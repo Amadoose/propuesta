@@ -13,7 +13,7 @@ SECRET_KEY = config('SECRET_KEY', default='your-secret-key-here')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Allowed hosts for production
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app', '.up.railway.app']
 
 # Application definition
 INSTALLED_APPS = [
@@ -60,18 +60,13 @@ WSGI_APPLICATION = 'dboard.wsgi.application'
 # Database configuration
 DATABASE_URL = config('DATABASE_URL', default=None)
 
-print(f"DATABASE_URL found: {bool(DATABASE_URL)}")  # Debug line
-print(f"DEBUG setting: {DEBUG}")  # Debug line
-
 if DATABASE_URL:
-    # Production database (Render) - using DATABASE_URL
-    print("Using DATABASE_URL for production")
+    # Production database (Render) - using DATABASE_URL    
     DATABASES = {
         'default': dj_database_url.parse(DATABASE_URL)
     }
 else:
-    # Local development database
-    print("Using local database configuration")
+    # Local development database   
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
